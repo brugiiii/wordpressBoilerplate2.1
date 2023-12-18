@@ -5,3 +5,34 @@
   }
   transition: $transitions;
 }
+
+@mixin hover($args...) {
+  $transition-props: ();
+
+  @each $arg in $args {
+    $property: null;
+    $start-value: null;
+    $end-value: null;
+
+    @if length($arg) == 3 {
+      $property: nth($arg, 1);
+      $start-value: nth($arg, 2);
+      $end-value: nth($arg, 3);
+    } @else if length($arg) == 2 {
+      $property: nth($arg, 1);
+      $start-value: nth($arg, 2);
+      $end-value: null;
+    }
+
+    @if $property {
+      $transition-props: append($transition-props, $property);
+
+      #{$property}: $start-value;
+      &:hover, &:focus {
+        #{$property}: $end-value;
+      }
+    }
+  }
+
+  @include transition($transition-props...);
+}
