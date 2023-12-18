@@ -6,7 +6,6 @@ add_filter('upload_mimes', 'svg_upload_allow');
 add_action('wpcf7_before_send_mail', 'send_message_to_telegram');
 add_filter('wp_check_filetype_and_ext', 'fix_svg_mime_type', 10, 5);
 
-
 function enqueue_scripts_and_styles(){
     wp_deregister_script('jquery');
     wp_register_script('jquery', '//code.jquery.com/jquery-1.11.0.min.js');
@@ -14,6 +13,7 @@ function enqueue_scripts_and_styles(){
 
     wp_enqueue_script('jquery');
     wp_enqueue_script('main-js', get_template_directory_uri() . '/dist/main.bundle.js', array('jquery'), null, true);
+    wp_localize_script('main-js', 'params', array('template_directory_url' => get_template_directory_uri()));
 }
 
 function theme_setup(){
