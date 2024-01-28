@@ -8,18 +8,6 @@ Template Name: Home
 
 <main>
     <?php get_template_part('sections/heroSection'); ?>
-    <section>
-        <div class="container"></div>
-    </section>
-    <section>
-        <div class="container"></div>
-    </section>
-    <section>
-        <div class="container"></div>
-    </section>
-    <section>
-        <div class="container"></div>
-    </section>
 </main>
 
 <?php get_footer(); ?>
